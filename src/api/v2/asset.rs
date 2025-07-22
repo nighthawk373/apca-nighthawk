@@ -361,6 +361,7 @@ pub struct Asset {
   /// Whether the asset is fractionable or not.
   #[serde(rename = "fractionable")]
   pub fractionable: bool,
+  
   /// Minimum order size.
   #[serde(rename = "min_order_size")]
   pub min_order_size: String,
@@ -370,6 +371,7 @@ pub struct Asset {
   /// Price increment.
   #[serde(rename = "price_increment")]
   pub price_increment: String,
+  
   #[doc(hidden)]
   #[serde(skip)]
   pub _non_exhaustive: (),
