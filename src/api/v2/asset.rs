@@ -363,13 +363,13 @@ pub struct Asset {
   pub fractionable: bool,
   
   /// Minimum order size.
-  #[serde(rename = "min_order_size")]
+  #[serde(default, rename = "min_order_size")]
   pub min_order_size: String,
   /// Minimum trade increment.
-  #[serde(rename = "min_trade_increment")]
+  #[serde(default, rename = "min_trade_increment")]
   pub min_trade_increment: String,
   /// Price increment.
-  #[serde(rename = "price_increment")]
+  #[serde(default, rename = "price_increment")]
   pub price_increment: String,
   
   #[doc(hidden)]
@@ -489,7 +489,10 @@ mod tests {
   "marginable": true,
   "shortable": true,
   "easy_to_borrow": true,
-  "fractionable": true
+  "fractionable": true,
+  "min_order_size": "1",
+  "min_trade_increment": "2",
+  "price_increment": "3"
 }"#;
 
     let id = Id(Uuid::parse_str("904837e3-3b76-47ec-b432-046db621571b").unwrap());
@@ -499,6 +502,9 @@ mod tests {
     assert_eq!(asset.exchange, Exchange::Nasdaq);
     assert_eq!(asset.symbol, "AAPL");
     assert_eq!(asset.status, Status::Active);
+    assert_eq!(asset.min_order_size, "1");
+    assert_eq!(asset.min_trade_increment, "2");
+    assert_eq!(asset.price_increment, "3");
     assert!(asset.tradable);
     assert!(asset.marginable);
     assert!(asset.shortable);
@@ -518,7 +524,10 @@ mod tests {
   "marginable": true,
   "shortable": true,
   "easy_to_borrow": true,
-  "fractionable": true
+  "fractionable": true,
+  "min_order_size": "1",
+  "min_trade_increment": "2",
+  "price_increment": "3"
 }"#;
 
     let asset = from_json::<Asset>(response).unwrap();
