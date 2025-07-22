@@ -588,4 +588,18 @@ mod tests {
       test(symbol).await;
     }
   }
+
+  #[test(tokio::test)]
+  async fn retrieve_crypto_asset() {
+    let symbol = Symbol::Sym("AAVE/USDT".to_string());
+
+    let api_info = ApiInfo::from_env().unwrap();
+    let client = Client::new(api_info);
+    let asset = client.issue::<Get>(&symbol).await.unwrap();
+    
+    assert_eq!(asset.symbol, "AAVE/USDT");
+    assert_eq!(asset.min_trade_increment, "0.000000001");
+    assert_eq!(asset.min_order_size, "0.003451727");
+    assert_eq!(asset.price_increment, "0.01");
+  }
 }
