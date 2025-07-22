@@ -1,12 +1,12 @@
 [package]
-name = "apca"
+name = "apca-nighthawk"
 version = "0.30.0"
 edition = "2021"
 rust-version = "1.63"
-authors = ["Daniel Mueller <deso@posteo.net>"]
+authors = ["Daniel Mueller <deso@posteo.net>", "Night Hawk <thenighthawk5732@gmail.com>"]
 license = "GPL-3.0-or-later"
-homepage = "https://github.com/d-e-s-o/apca"
-repository = "https://github.com/d-e-s-o/apca.git"
+homepage = "https://github.com/nighthawk373/apca-nighthawk"
+repository = "https://github.com/nighthawk373/apca-nighthawk.git"
 readme = "README.md"
 categories = [
   "api-bindings",
